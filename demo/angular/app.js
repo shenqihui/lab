@@ -5,7 +5,7 @@ app.run(function($rootScope) {
 });
 app.controller('appController', function($scope) {
   $scope.person = {
-    name: 'Parent and Child controller'
+    // name: 'Parent and Child controller'
   };
 });
 app.controller('ParentController', function($scope) {
@@ -117,7 +117,7 @@ app.controller('AjaxController', ['$scope', '$http',
 
 function FetchCtrl($scope, $http, $templateCache) {
   $scope.method = 'GET';
-  $scope.url = 'http-hello.html';
+  $scope.url = './index.html';
   $scope.fetch = function() {
     $scope.code = null;
     $scope.response = null;

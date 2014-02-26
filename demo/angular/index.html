@@ -44,13 +44,22 @@
     </div><!-- /.container -->
     
     <div class="container">
+      <h3>Begin Demo.</h3>
       <section>
       <input type="text" ng-model="yourName" placeholder="Your Name">
       <p><span>Hello{{ yourName ? ", " + yourName : "" }}!</span><br /><span>Hello{{ yourName ? ", " + yourName : "" }}!</span></p>
     </div>
     <div class="container">
+      <h3>Scope</h3>
+      <div ng-controller="FunctionArgusController">
+        <button class="btn" ng-click="add(1)">第{{ addClickNum }}次点击增加</button>
+        <button class="btn" ng-click="reduce(1)">第{{ resuceClickNum }}次点击减少</button>
+        total:{{ total }}
+      </div>
+    </div>
+    <div class="container">
       <div ng-controller="appController">
-        <h3>{{ person.name || uppercase }}</h3>
+        <h3>Parent and Child controller &amp; Scope</h3>
       </div>
       <div ng-controller="ParentController">
         <div ng-controller="ChildController">
@@ -63,18 +72,6 @@
           <p>ChildController:{{ person }}<span class="btn btn-default" ng-show="!extend">非继承父类。</span> <span class="btn btn-default" ng-show="extend">继承父类。</span></p>
         </div>
         ParentController:{{ person }} 
-      </div>
-    </div>
-    <div class="container">
-      <div ng-controller="FunctionArgusController">
-        <button class="btn" ng-click="add(1)">第{{ addClickNum }}次点击增加</button>
-        <button class="btn" ng-click="reduce(1)">第{{ resuceClickNum }}次点击减少</button>
-        total:{{ total }}
-      </div>
-    </div>
-    <div class="container">
-      <div ng-controller="AjaxController">
-        <button class="btn btn-primary" ng-click='ajax()'>Ajax</button>
       </div>
     </div>
     <div class="container">
@@ -95,19 +92,24 @@
       <!-- <footer>shenqihui0920@gmail.com © 神奇辉 </footer> -->
     </div><!-- /.container -->
     
-
-    <div ng-controller="FetchCtrl">
-      <select ng-model="method">
-        <option>GET</option>
-        <option>JSONP</option>
-      </select>
-      <input type="text" ng-model="url" size="80"/>
-      <button class="btn btn-primary" id="fetchbtn" ng-click="fetch()">fetch</button><br>
-      <button class="btn btn-primary" id="samplegetbtn" ng-click="updateModel('GET', 'http-hello.html')">Sample GET</button>
-      <button class="btn btn-primary" id="samplejsonpbtn" ng-click="updateModel('JSONP', 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero')">Sample JSONP</button>
-      <button class="btn btn-primary" id="invalidjsonpbtn" ng-click="updateModel('JSONP', 'http://angularjs.org/doesntexist&callback=JSON_CALLBACK')">Invalid JSONP</button>
-      <pre>http status code: {{ status }}</pre>
-      <pre>http response data: {{ data }}</pre>
+    <div class="container">
+      <h3>关于 Ajax $http 的使用</h3>
+      <div ng-controller="AjaxController">
+        <button class="btn btn-primary" ng-click='ajax()'>Ajax ，瞧瞧 console</button>
+      </div>
+      <div ng-controller="FetchCtrl">
+        <select ng-model="method">
+          <option>GET</option>
+          <option>JSONP</option>
+        </select>
+        <input type="text" ng-model="url" size="80"/>
+        <button class="btn btn-primary" id="fetchbtn" ng-click="fetch()">RUN ，瞧瞧 console</button><br>
+        <button class="btn btn-primary" id="samplegetbtn" ng-click="updateModel('GET', './index.html')">GET</button>
+        <button class="btn btn-primary" id="samplejsonpbtn" ng-click="updateModel('JSONP', 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero')">JSONP</button>
+        <button class="btn btn-primary" id="invalidjsonpbtn" ng-click="updateModel('JSONP', '#&callback=JSON_CALLBACK')">失败的 JSONP</button>
+        <pre>http status code: {{ status }}</pre>
+        <pre>http response data: {{ data }}</pre>
+      </div>
     </div>
 
     <script src="/lab/lib/jquery/jquery-2.1.0.min.js"></script>
