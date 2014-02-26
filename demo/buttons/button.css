@@ -1,0 +1,161 @@
+.button{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+
+  -webkit-border-radius:.1em;
+  -moz-border-radius:.1em;
+  -ms-border-radius:.1em;
+  -o-border-radius:.1em;
+  border-radius:.1em;
+
+  display:inline-block;
+
+  cursor:pointer;
+  border:.1em solid #F0DFEE;
+  border:.1em solid rgba(240,223,238,.7);
+  padding:0em .2em;
+  margin:.1em .1em;
+  margin-left:0.5em;
+    
+  color:#bbb;
+  background-color:#484848;
+  background-color:rgba(72,72,72,.6);
+}
+.button:hover{
+  border:0.1em solid #F0DFEE;
+  border:0.1em solid rgba(240,223,238,.9);
+    
+  color:#fff;
+  background-color:#484848;
+  background-color:rgba(72,72,72,.9);
+}
+.button:active{
+  border:.1em solid #F0DFEE;
+  border:.1em solid rgba(240,223,238,.5);
+  border-bottom:.1em solid #F0DFEE;
+  border-bottom:.1em solid rgba(240,223,238,.45);
+  border-right:.1em solid #F0DFEE;
+  border-right:.1em solid rgba(240,223,238,.45);
+    
+  color:#ddd;
+  background-color:#484848;
+  background-color:rgba(72,72,72,.7);
+  box-shadow:-.05em -.05em .05em #666;
+}
+/*按照W3C标准，button disabled 属性存在，即不能点击，所以必须严格适用 attr ，想放松就更改下面的注释*/
+/*.button[disabled=""],.button[disabled=""]:hover,.button[disabled=""]:active,.button[disabled=disabled],.button[disabled=disabled]:hover,.button[disabled=disabled]:active,.button[disabled=true],.button[disabled=true]:hover,.button[disabled=true]:active,*/
+  .button[disabled]:before{
+  /*for(str="",a="\\00a",i = 0;i<10;i++){str+= (a+i); };console.log(str) 
+  for(str="",istr ="",a="\\00",i = 0;i<10;i++){istr= (a+i); for(j=0;j<10;j++){str+=(istr+j)} str+="\n"; }console.log(str) */ 
+  content:"\000d8";
+}
+.button[disabled],.button[disabled]:hover,.button[disabled]:active{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+
+  -webkit-border-radius:0.1em;
+  -moz-border-radius:0.1em;
+  -ms-border-radius:0.1em;
+  -o-border-radius:0.1em;
+  border-radius:0.1em;
+
+  display:inline-block;
+
+  cursor:not-allowed;
+  border:0.1em solid #F0DFEE;
+  border:0.1em solid rgba(240,223,238,.5);
+  padding:0em 0.2em;
+    
+  color:#999;
+  background-color:#484848;
+  background-color:rgba(72,72,72,.5);
+  box-shadow:0 0 0 #000;
+}
+
+
+
+.button-dark{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+
+  -webkit-border-radius:.1em;
+  -moz-border-radius:.1em;
+  -ms-border-radius:.1em;
+  -o-border-radius:.1em;
+  border-radius:.1em;
+
+  display:inline-block;
+
+  cursor:pointer;
+  border:.1em solid #F0DFEE;
+  border:.1em solid rgba(240,223,238,.7);
+  padding:0em .2em;
+  margin:.1em .1em;
+  margin-left:0.5em;
+    
+  color:#bbb;
+  background-color:#484848;
+  background-color:rgba(72,72,72,.6);
+}
+.button-dark:hover{
+  border:0.1em solid #F0DFEE;
+  border:0.1em solid rgba(240,223,238,.9);
+    
+  color:#fff;
+  background-color:#484848;
+  background-color:rgba(72,72,72,.9);
+}
+.button-dark:active{
+  border:.1em solid #F0DFEE;
+  border:.1em solid rgba(240,223,238,.5);
+  border-bottom:.1em solid #F0DFEE;
+  border-bottom:.1em solid rgba(240,223,238,.45);
+  border-right:.1em solid #F0DFEE;
+  border-right:.1em solid rgba(240,223,238,.45);
+    
+  color:#ddd;
+  background-color:#484848;
+  background-color:rgba(72,72,72,.7);
+  box-shadow:-.05em -.05em .05em #666;
+}
+/*按照W3C标准，button-dark disabled 属性存在，即不能点击，所以必须严格适用 attr ，想放松就更改下面的注释*/
+/*.button-dark[disabled=""],.button-dark[disabled=""]:hover,.button-dark[disabled=""]:active,.button-dark[disabled=disabled],.button-dark[disabled=disabled]:hover,.button-dark[disabled=disabled]:active,.button-dark[disabled=true],.button-dark[disabled=true]:hover,.button-dark[disabled=true]:active,*/
+  .button-dark[disabled]:before{
+  /*for(str="",a="\\00a",i = 0;i<10;i++){str+= (a+i); };console.log(str) 
+  for(str="",istr ="",a="\\00",i = 0;i<10;i++){istr= (a+i); for(j=0;j<10;j++){str+=(istr+j)} str+="\n"; }console.log(str) */ 
+  content:"\000d8";
+}
+.button-dark[disabled],.button-dark[disabled]:hover,.button-dark[disabled]:active{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+
+  -webkit-border-radius:0.1em;
+  -moz-border-radius:0.1em;
+  -ms-border-radius:0.1em;
+  -o-border-radius:0.1em;
+  border-radius:0.1em;
+
+  display:inline-block;
+
+  cursor:not-allowed;
+  border:0.1em solid #F0DFEE;
+  border:0.1em solid rgba(240,223,238,.5);
+  padding:0em 0.2em;
+    
+  color:#999;
+  background-color:#484848;
+  background-color:rgba(72,72,72,.5);
+  box-shadow:0 0 0 #000;
+}

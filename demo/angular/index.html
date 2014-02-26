@@ -1,0 +1,121 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>AngularJS Demo</title>
+
+    <link href="/lab/favicon.ico" rel="icon">
+    <link href="/lab/favicon.ico" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="/lab/lib/bootstrap/3.0.3/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="/lab/lib/buttons/buttons.css"> -->
+    <style>
+      body{
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">AngularJS Demo</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+      <header class="nav"><h1>AngularJS Demo</h1> </header>
+    </div><!-- /.container -->
+    
+    <div class="container">
+      <section>
+      <input type="text" ng-model="yourName" placeholder="Your Name">
+      <p><span>Hello{{ yourName ? ", " + yourName : "" }}!</span><br /><span>Hello{{ yourName ? ", " + yourName : "" }}!</span></p>
+    </div>
+    <div class="container">
+      <div ng-controller="appController">
+        <h3>{{ person.name || uppercase }}</h3>
+      </div>
+      <div ng-controller="ParentController">
+        <div ng-controller="ChildController">
+          <input type="text" ng-model="person.name" placeholder="Name"></input>
+          <button ng-click="hello()" class="btn btn-primary">Hello</button>
+          <button ng-click="init()" class="btn btn-primary">init，不继承父类</button>
+          <button ng-click="extendParent()" class="btn btn-primary">extend，继承父类</button>
+          <button ng-click="timer()" class="btn btn-primary">Timer</button>
+          <button ng-click="sayHello()" disabled class="btn btn-primary">Disabled</button>
+          <p>ChildController:{{ person }}<span class="btn btn-default" ng-show="!extend">非继承父类。</span> <span class="btn btn-default" ng-show="extend">继承父类。</span></p>
+        </div>
+        ParentController:{{ person }} 
+      </div>
+    </div>
+    <div class="container">
+      <div ng-controller="FunctionArgusController">
+        <button class="btn" ng-click="add(1)">第{{ addClickNum }}次点击增加</button>
+        <button class="btn" ng-click="reduce(1)">第{{ resuceClickNum }}次点击减少</button>
+        total:{{ total }}
+      </div>
+    </div>
+    <div class="container">
+      <div ng-controller="AjaxController">
+        <button class="btn btn-primary" ng-click='ajax()'>Ajax</button>
+      </div>
+    </div>
+    <div class="container">
+      <div ng-controller="ButtonController">
+        <h3>ButtonController</h3>
+        <button class="btn btn-primary" ng-click="append()">Append</button>
+        <button class="btn btn-primary" ng-click="remove()">Remove</button>
+        <ul id="buttonContainer" class="nav nav-pills"></ul>
+      </div>
+      <!-- <div ng-app="appa">
+        <input type="text" ng-model="yourNameApp2" placeholder="Your Name">
+        <h1>Hello{{ yourNameApp2 ? ", " + yourNameApp2 : "" }}!</h1>
+      </div> -->
+    </section>
+    </div><!-- /.container -->
+
+    <div class="container">
+      <!-- <footer>shenqihui0920@gmail.com © 神奇辉 </footer> -->
+    </div><!-- /.container -->
+    
+
+    <div ng-controller="FetchCtrl">
+      <select ng-model="method">
+        <option>GET</option>
+        <option>JSONP</option>
+      </select>
+      <input type="text" ng-model="url" size="80"/>
+      <button class="btn btn-primary" id="fetchbtn" ng-click="fetch()">fetch</button><br>
+      <button class="btn btn-primary" id="samplegetbtn" ng-click="updateModel('GET', 'http-hello.html')">Sample GET</button>
+      <button class="btn btn-primary" id="samplejsonpbtn" ng-click="updateModel('JSONP', 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero')">Sample JSONP</button>
+      <button class="btn btn-primary" id="invalidjsonpbtn" ng-click="updateModel('JSONP', 'http://angularjs.org/doesntexist&callback=JSON_CALLBACK')">Invalid JSONP</button>
+      <pre>http status code: {{ status }}</pre>
+      <pre>http response data: {{ data }}</pre>
+    </div>
+
+    <script src="/lab/lib/jquery/jquery-2.1.0.min.js"></script>
+    <script src="/lab/lib/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <!-- <script src="/lib/buttons/buttons.js"></script> -->
+    <script src="/lab/lib/angularjs/angular-1.2.13.min.js"></script>
+    <script src="./app.js"></script>
+    <script></script>
+    
+  </body>
+</html>
