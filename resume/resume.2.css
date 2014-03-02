@@ -157,6 +157,13 @@ body {color:#666;}
 
 /* print */
 @media print{
+  .tips{
+    margin-bottom:2px;
+  }
+  .PageNext{
+    PAGE-BREAK-AFTER: always;
+  }   
+
   .container{
     margin: 0;
     width: 100%;
