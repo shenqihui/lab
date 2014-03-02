@@ -1,10 +1,9 @@
 <!doctype html>
-<html ng-app="app">
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>AngularJS Demo</title>
-
     <link href="/lab/favicon.ico" rel="icon">
     <link href="/lab/favicon.ico" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -13,14 +12,21 @@
     <![endif]-->
 
     <link rel="stylesheet" href="/lab/lib/bootstrap/3.0.3/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="/lab/lib/buttons/buttons.css"> -->
     <style>
       body{
         margin-top: 50px;
+        height: 100%;
+      }
+      h3[id] {
+        padding-top: 80px;
+        margin-top: -45px;
+      }
+      .container[page]{
+        height: 100%;
       }
     </style>
   </head>
-  <body>
+  <body data-spy="scroll" data-offset="120" data-target=".nav-scroll">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -36,82 +42,113 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-    <div class="container">
-      <header class="nav"><h1>AngularJS Demo</h1> </header>
-    </div><!-- /.container -->
-    
-    <div class="container">
-      <h3>Begin Demo.</h3>
-      <section>
-      <input type="text" ng-model="yourName" placeholder="Your Name">
-      <p><span>Hello{{ yourName ? ", " + yourName : "" }}!</span><br /><span>Hello{{ yourName ? ", " + yourName : "" }}!</span></p>
-    </div>
-    <div class="container">
-      <h3>Scope</h3>
-      <div ng-controller="FunctionArgusController">
-        <button class="btn" ng-click="add(1)">第{{ addClickNum }}次点击增加</button>
-        <button class="btn" ng-click="reduce(1)">第{{ resuceClickNum }}次点击减少</button>
-        total:{{ total }}
-      </div>
-    </div>
-    <div class="container">
-      <div ng-controller="appController">
-        <h3>Parent and Child controller &amp; Scope</h3>
-      </div>
-      <div ng-controller="ParentController">
-        <div ng-controller="ChildController">
-          <input type="text" ng-model="person.name" placeholder="Name"></input>
-          <button ng-click="hello()" class="btn btn-primary">Hello</button>
-          <button ng-click="init()" class="btn btn-primary">init，不继承父类</button>
-          <button ng-click="extendParent()" class="btn btn-primary">extend，继承父类</button>
-          <button ng-click="timer()" class="btn btn-primary">Timer</button>
-          <button ng-click="sayHello()" disabled class="btn btn-primary">Disabled</button>
-          <p>ChildController:{{ person }}<span class="btn btn-default" ng-show="!extend">非继承父类。</span> <span class="btn btn-default" ng-show="extend">继承父类。</span></p>
         </div>
-        ParentController:{{ person }} 
       </div>
     </div>
-    <div class="container">
-      <div ng-controller="ButtonController">
-        <h3>ButtonController</h3>
-        <button class="btn btn-primary" ng-click="append()">Append</button>
-        <button class="btn btn-primary" ng-click="remove()">Remove</button>
-        <ul id="buttonContainer" class="nav nav-pills"></ul>
+    <div class="container">      
+      <div class="col-md-3 nav-scroll">
+        <ul class="nav nav-pills nav-stacked" style="position:fixed;">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#begin">Begin</a></li>
+          <li><a href="#scope">Scope</a></li>
+          <li><a href="#extends">Scope Extends</a></li>
+          <li><a href="#buttons">Buttons</a></li>
+          <li><a href="#ajax">Ajax</a></li>
+          <li><a href="#expression">Expression</a></li>
+        </ul>
       </div>
-      <!-- <div ng-app="appa">
-        <input type="text" ng-model="yourNameApp2" placeholder="Your Name">
-        <h1>Hello{{ yourNameApp2 ? ", " + yourNameApp2 : "" }}!</h1>
-      </div> -->
-    </section>
+      <div class="col-md-9">
+        <div class="section" page>
+          <h3 id="#home">AngularJS Demo</h3>
+        </div>
+        <div class="section" page>
+          <h3 id="begin">Begin Demo.</h3>
+          <section>
+          <input type="text" ng-model="yourName" placeholder="Your Name">
+          <p><span>Hello{{ yourName ? ", " + yourName : "" }}!</span><br /><span>Hello{{ yourName ? ", " + yourName : "" }}!</span></p>
+        </div>
+        <div class="section" page>
+          <h3 id="scope">Scope</h3>
+          <div ng-controller="FunctionArgusController">
+            <button class="btn" ng-click="add(1)">第{{ addClickNum }}次点击增加</button>
+            <button class="btn" ng-click="reduce(1)">第{{ resuceClickNum }}次点击减少</button>
+            total:{{ total }}
+          </div>
+        </div>
+        <div class="section" page>
+          <div ng-controller="ParentController">
+            <h3 id="extends">Parent and Child controller &amp; Scope</h3>
+            <div ng-controller="ChildController">
+              <input type="text" ng-model="person.name" placeholder="Name"></input>
+              <button ng-click="hello()" class="btn btn-primary">Hello</button>
+              <button ng-click="init()" class="btn btn-primary">init，不继承父类</button>
+              <button ng-click="extendParent()" class="btn btn-primary">extend，继承父类</button>
+              <button ng-click="timer()" class="btn btn-primary">Timer</button>
+              <button ng-click="sayHello()" disabled class="btn btn-primary">Disabled</button>
+              <p>ChildController:{{ person }}<span class="btn btn-default" ng-show="!extend">非继承父类。</span> <span class="btn btn-default" ng-show="extend">继承父类。</span></p>
+            </div>
+            ParentController:{{ person }} 
+          </div>
+        </div>
+        <div class="section" page>
+          <div ng-controller="ButtonController">
+            <h3 id="buttons">ButtonController</h3>
+            <button class="btn btn-primary" ng-click="append()">Append</button>
+            <button class="btn btn-primary" ng-click="remove()">Remove</button>
+            <ul id="buttonContainer" class="nav nav-pills"></ul>
+          </div>
+        </section>
+        </div>
+        <div class="section" page>
+          <h3 id="ajax">关于 Ajax $http 的使用</h3>
+          <div ng-controller="AjaxController">
+            <button class="btn btn-primary" ng-click='ajax()'>Ajax ，瞧瞧 console</button>
+          </div>
+          <div ng-controller="FetchCtrl">
+            <select ng-model="method">
+              <option>GET</option>
+              <option>JSONP</option>
+            </select>
+            <input type="text" ng-model="url" size="80"/>
+            <button class="btn btn-primary" id="fetchbtn" ng-click="fetch()">RUN ，瞧瞧 console</button><br>
+            <button class="btn btn-primary" id="samplegetbtn" ng-click="updateModel('GET', './index.html')">GET</button>
+            <button class="btn btn-primary" id="samplejsonpbtn" ng-click="updateModel('JSONP', 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero')">JSONP</button>
+            <button class="btn btn-primary" id="invalidjsonpbtn" ng-click="updateModel('JSONP', '#&callback=JSON_CALLBACK')">失败的 JSONP</button>
+            <pre>http status code: {{ status }}</pre>
+            <pre>http response data: {{ data }}</pre>
+          </div>
+        </div>
+        <div class="section" page>
+          <h3 id="expression">Expression</h3>
+          <button class="btn btn-default">{{ 8 + 1 }} 9</button>
+          <button class="btn btn-dafault" ng-init="person.sex='male'">{{ person }} {"name":"Ari Lerner"}</button>
+          <button class="btn btn-dafault">{{ 10 * 3.3 | currency }} $33.00</button>
+          <button class="btn btn-dafault" ng-init="counter=1" ng-click="counter = counter + 1">自动 Add ： {{ counter }}</button>
+          <button class="btn btn-dafault" ng-show="!(counter%2)" ng-hide="counter%2">偶数</button>
+          <button class="btn btn-dafault" ng-show="counter%2" ng-hide="!(counter%2)">基数</button>
+          <div ng-controller="RepeatController">
+            <ul class="list-group">
+              <li class="list-group-item" ng-repeat="person in people" ng-click="log(person)"><span class="badge">{{person.age}}</span>{{person.name}}</li>
+            </ul>
+          </div>
+          <div ng-controller="PropertyController">
+            <ul class="list-group">
+              <li class="list-group-item" ng-click="log(name,value)" ng-repeat="(name,value) in people"><span class="badge">{{value}}</span>{{name}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section" page>
+          <div ng-controller="ServiceController">
+            <label for="username">Type in a GitHub username</label>
+            <input type="text" ng-model="username" placeholder="Enter a GitHub username, like auser" />
+            <pre ng-show="username" ng-init="events='init'">{{ events || 'init'}}</pre>
+          </div>
+        </div>
+      </div><!-- /.col-md-9 -->
     </div><!-- /.container -->
-
     <div class="container">
       <!-- <footer>shenqihui0920@gmail.com © 神奇辉 </footer> -->
     </div><!-- /.container -->
-    
-    <div class="container">
-      <h3>关于 Ajax $http 的使用</h3>
-      <div ng-controller="AjaxController">
-        <button class="btn btn-primary" ng-click='ajax()'>Ajax ，瞧瞧 console</button>
-      </div>
-      <div ng-controller="FetchCtrl">
-        <select ng-model="method">
-          <option>GET</option>
-          <option>JSONP</option>
-        </select>
-        <input type="text" ng-model="url" size="80"/>
-        <button class="btn btn-primary" id="fetchbtn" ng-click="fetch()">RUN ，瞧瞧 console</button><br>
-        <button class="btn btn-primary" id="samplegetbtn" ng-click="updateModel('GET', './index.html')">GET</button>
-        <button class="btn btn-primary" id="samplejsonpbtn" ng-click="updateModel('JSONP', 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero')">JSONP</button>
-        <button class="btn btn-primary" id="invalidjsonpbtn" ng-click="updateModel('JSONP', '#&callback=JSON_CALLBACK')">失败的 JSONP</button>
-        <pre>http status code: {{ status }}</pre>
-        <pre>http response data: {{ data }}</pre>
-      </div>
-    </div>
-
     <script src="/lab/lib/jquery/jquery-2.1.0.min.js"></script>
     <script src="/lab/lib/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <!-- <script src="/lib/buttons/buttons.js"></script> -->
