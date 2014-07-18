@@ -85,6 +85,9 @@ body {color:#666;}
 .profiles dd{
   margin-left: 6em;
 }
+.timeline dt{
+  margin-top: 1em;
+}
 .timeline dd{
   margin-left: 3em;
 }
