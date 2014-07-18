@@ -16,7 +16,7 @@ body {color:#666;}
 .tips{
   display: inline-block;
   text-decoration: none;
-  text-shadow: 0 .1em 0 rgba(255, 255, 255, 0.4);
+  /*text-shadow: 0 .1em 0 rgba(255, 255, 255, 0.4);*/
   font-family: 'Helvetica Neue', helvetica, sans-serif;
   vertical-align: middle;
   -webkit-border-radius: .5em;
@@ -56,7 +56,7 @@ body {color:#666;}
   color: #FFFFFF;
   vertical-align: middle;
   margin-right: .2em;
-  text-shadow: 0 -0.1em -0.1em rgba(0, 0, 0, 0.2);
+  /*text-shadow: 0 -0.1em -0.1em rgba(0, 0, 0, 0.2);*/
 }
 .tips-d{
   color: #428bca;
