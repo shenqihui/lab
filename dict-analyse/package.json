@@ -1,0 +1,28 @@
+{
+  "name": "dict-analyse",
+  "version": "0.1.0",
+  "devDependencies": {},
+  "main": "./bin/index.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "shenqihui<shenqihui0920@gmail.com>",
+  "license": "MIT",
+  "description": "merger all same line with only one record line",
+  "keywords": [
+    "merger",
+    "dict",
+    "analyse"
+  ],
+  "bin": {
+    "dict-analyse": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shenqihui/dict-analyse.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shenqihui/dict-analyse/issues"
+  },
+  "homepage": "https://github.com/shenqihui/dict-analyse"
+}
