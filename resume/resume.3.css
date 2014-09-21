@@ -180,15 +180,9 @@ body {color:#666;}
   a, a:link, a:visited, a:hover, a:active{
     text-decoration: none;
   }
-  a[href][not-print]:after {
-    content: "";
-  }
   a[href]:after {
     content: " (" attr(href) ")";
     text-decoration: underline;
-  }
-  .not-print{
-    display: none;
   }
   body{
     padding: 0;
