@@ -1,0 +1,43 @@
+doctype html
+html(lang="zh-CN")
+  head
+    title= pageTitle
+  
+  - var authenticate = true
+  body(class=authenticate ? "authed" : "anon")
+
+    a(href="google.com.hk") Google
+    a(class="button", href="google.com.hk") Google
+  
+    input(
+      type="checkbox"
+      name="agreement"
+      checked
+    )
+
+    div(escaped="<code>")
+    div(unescaped!="<code>")
+
+    input(type="checkbox", checked)
+    input(type="checkbox", checked=true)
+    input(type="checkbox", checked=false)
+    input(type="checkbox", checked=true.toString())
+    input(type="checkbox", checked=true && "checked")
+    
+    - var classes = ["foo", "bar", "baz"]
+    a(class=classes)
+      //- the class attribute may also repeated to merge arrays
+    a.bing(class=classes class=["bing"])
+
+    a.button
+
+    .content
+
+    a#main-link
+
+    #content
+
+    div#foo(data-bar="foo")&attributes({"data-foo": "bar"})
+
+    -var attributes = {"data-foo": "bar"}
+    div#foo(data-bar="foo")&attributes(attribute)

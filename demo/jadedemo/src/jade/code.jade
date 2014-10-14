@@ -1,0 +1,19 @@
+doctype html
+html(lang="zh-CN")
+  head
+    title code jade
+  body
+    - for (var x = 0; x - 3; x++)
+      li item
+
+    p
+      = "This code is <escaped>!"
+
+    p= "This code is" + " <escaped>!"
+
+    - var user ={name: "Forbes Lindesay"}
+    p Welcome #{user.name}
+
+    -var user = {name: "<strong>Forbes Lindesay</strong>"}
+    p Welcome #{user.name}
+    p Welcome !{user.name}

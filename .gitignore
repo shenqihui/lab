@@ -1,0 +1,7 @@
+node_modules/*
+bower_components/*
+dist/*
+_build/*
+*/node_modules/*
+*/*/node_modules/*
+demo/jadedemo/node_modules/*

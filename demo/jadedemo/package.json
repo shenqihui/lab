@@ -1,0 +1,29 @@
+{
+  "name": "jadeDemo",
+  "version": "0.1.0",
+  "description": "My jade demo.",
+  "keywords": "jade",
+  "homepage": "",
+  "author": {
+    "name": "shenqihui",
+    "profile": "",
+    "blog": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "devDependencies": {
+    "grunt": ">0.4.0",
+    "grunt-contrib-jade": ">0.6.0",
+    "grunt-contrib-watch": "*",
+    "grunt-hashmap": "0.1.5",
+    "grunt-html2js": "~0.2.0"
+  }
+}

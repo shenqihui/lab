@@ -1,0 +1,27 @@
+doctype html
+html(lang="zh-CN")
+  head
+    title case jade
+  body
+    - var friends = 10
+    case friends
+      when 0
+        p you have no friends
+      when 1
+        p you have a friends
+      default
+        p you have #{friends} friends
+
+    - var friends2 = 0
+    case friends2
+      when 0
+      when 1
+        p you have very few friends
+      default
+        p you have #{friends2} friends
+
+    - var friends3 = 1
+    case friends3
+      when 0: p you have no friends
+      when 1: p you have a friend
+      default: p you have #{friends3} friends
