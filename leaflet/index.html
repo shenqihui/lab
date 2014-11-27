@@ -29,11 +29,19 @@
             left: 60px;
             z-index: 2;
         }
+        .leaflet-container {
+            cursor: default;
+        }
+        .leaflet-container:active{
+            cursor: -webkit-grab;
+            cursor: -moz-grab;
+        }
         @media (max-width: 361px) {
             .mapNowHoverStatus{
                 display: none;
             }
         }
+
     </style>
 </head>
 <body>
@@ -45,7 +53,8 @@
     <script type="text/javascript" src="js/zepto.min.js"></script>
     <script type="text/javascript" src="leaflet/leaflet-src.js"></script>
     <script>
-        var map = L.map('map').setView([39.9943, 116.4736], 3);
+        // var map = L.map('map').setView([39.9943, 116.4736], 3);
+        var map = L.map('map').setView([46.07323, 14.0625], 2);
         
         // http://a.tile.openstreetmap.org/15/26692/14219.png
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
