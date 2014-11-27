@@ -1,42 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Leaflet Demo</title>
-  <link rel="stylesheet" href="leaflet/leaflet.css">
-  <style>
-    #map { height: 400px; width: 100%;}
-  </style>
+    <meta charset="UTF-8">
+    <title>Leaflet Demo</title>
+    <link rel="stylesheet" href="leaflet/leaflet.css">
+    <style>
+        html, body, .mapContainer { margin: 0; border: 0; padding: 0; height: 100%; width: 100%;}
+        .mapNowHoverStatus{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            background: white;
+            font-size: 13px;
+        }
+        .mapContainer{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .title {
+            position: absolute;
+            top: 0;
+            left: 60px;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
-  <div id="map"></div>
-  <script type="text/javascript" src="leaflet/leaflet-src.js"></script>
-  <script>
-    var map = L.map('map').setView([39.9943, 116.4736], 14);
-    
-      // http://a.tile.openstreetmap.org/15/26692/14219.png
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      maxZoom: 18
-    }).addTo(map);
+    <h1 class="title">D-Link 路由器后门全球分布</h1>
+    <div id="mapNowHoverStatus" class="mapNowHoverStatus"></div>
+    <div id="map" class="mapContainer">
+        
+    </div>
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript" src="leaflet/leaflet-src.js"></script>
+    <script>
+        var map = L.map('map').setView([39.9943, 116.4736], 2);
+        
+        // http://a.tile.openstreetmap.org/15/26692/14219.png
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors | 数据来源：<a href="www.zoomeye.org/lab/report/dlink" title="ZoomEye">ZoomEye</a>',
+            maxZoom: 18
+        }).addTo(map);
 
+        // var polygon = L.polygon([
+        //     [39.9943, 116.4736],
+        //     [39.9943, 116.4836],
+        //     [39.9843, 116.4736]
+        // ]).addTo(map);
 
-    var polygon = L.polygon([
-      [51.509, -0.08],
-      [51.503, -0.06],
-      [51.51, -0.047]
-    ]).addTo(map);
+        // var marker = L.marker([39.9943, 116.4736]).addTo(map);
+        // marker.bindPopup("<b>Hello world!</b><br>SOHO.").openPopup();
 
-    marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-    circle.bindPopup("I am a circle.");
-    polygon.bindPopup("I am a polygon.");
+        // var circle = L.circle([39.9843, 116.4736], 500, {
+        //     color: 'red',
+        //     fillColor: '#f03',
+        //     fillOpacity: 0.5
+        // }).addTo(map);
+        // circle.bindPopup("I am a circle.");
 
-    var popup = L.popup()
-    .setLatLng([51.5, -0.09])
-    .setContent("I am a standalone popup.")
-    .openOn(map);
+        // var polygon = L.polygon([
+        //     [39.9843, 116.4736],
+        //     [39.9843, 116.4716],
+        //     [39.9643, 116.4756]
+        // ]).addTo(map);
+        // polygon.bindPopup("I am a polygon.");
 
+        // var popup = L.popup()
+        // .setLatLng([39.9943, 116.4636])
+        // .setContent("I am a standalone popup.")
+        // .openOn(map);
 
-  </script>
+        // function onMapClick(e) {
+        //     alert("You clicked the map at " + e.latlng);
+        // }
+
+        // map.on('click', onMapClick);
+
+        var mapNowHoverStatus = document.getElementById('mapNowHoverStatus');
+        map.on('mousemove', function(e) {
+            var latlng = e.latlng
+            mapNowHoverStatus.innerHTML = "{lat:"+latlng.lat+",lng:"+latlng.lng+"}";
+        })
+
+    </script>
+    <script>
+        function addPointer(item){
+            var circle = L.circle(item[0], item[2]*1000, {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5
+            }).addTo(map);
+            circle.bindPopup("IP:"+item[1]+", Count:"+item[2]+" parter");
+
+            console.log(item);
+        }
+        $.getJSON('json/dlink-backdoor.json', function(data){
+            console.log(data);
+
+            $.each(data.pins, function(index, item) {
+                
+                addPointer(item);
+            })
+        })
+    </script>
 </body>
 </html>
