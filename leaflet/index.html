@@ -28,6 +28,11 @@
             left: 60px;
             z-index: 2;
         }
+        @media (max-width: 361px) {
+            .mapNowHoverStatus{
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -43,7 +48,7 @@
         
         // http://a.tile.openstreetmap.org/15/26692/14219.png
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors | 数据来源：<a href="www.zoomeye.org/lab/report/dlink" title="ZoomEye">ZoomEye</a>',
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> | 数据来源：<a href="www.zoomeye.org/lab/report/dlink" title="ZoomEye">ZoomEye</a>',
             maxZoom: 18
         }).addTo(map);
 
