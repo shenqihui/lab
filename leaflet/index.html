@@ -106,10 +106,8 @@
             console.log(item);
         }
         $.getJSON('json/dlink-backdoor.json', function(data){
-            console.log(data);
-
+            // console.log(data);
             $.each(data.pins, function(index, item) {
-                
                 addPointer(item);
             })
         })
