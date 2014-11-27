@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Leaflet Demo</title>
     <link rel="stylesheet" href="leaflet/leaflet.css">
     <style>
@@ -29,7 +31,7 @@
     </style>
 </head>
 <body>
-    <h1 class="title">D-Link 路由器后门全球分布</h1>
+    <h3 class="title">D-Link 路由器后门全球分布</h3>
     <div id="mapNowHoverStatus" class="mapNowHoverStatus"></div>
     <div id="map" class="mapContainer">
         
@@ -37,7 +39,7 @@
     <script type="text/javascript" src="js/zepto.min.js"></script>
     <script type="text/javascript" src="leaflet/leaflet-src.js"></script>
     <script>
-        var map = L.map('map').setView([39.9943, 116.4736], 2);
+        var map = L.map('map').setView([39.9943, 116.4736], 3);
         
         // http://a.tile.openstreetmap.org/15/26692/14219.png
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -88,12 +90,12 @@
     </script>
     <script>
         function addPointer(item){
-            var circle = L.circle(item[0], item[2]*1000, {
+            var circle = L.circle(item[0], item[2]*400, {
                 color: 'red',
                 fillColor: '#f03',
                 fillOpacity: 0.5
             }).addTo(map);
-            circle.bindPopup("IP:"+item[1]+", Count:"+item[2]+" parter");
+            circle.bindPopup("IP:"+item[1]+", Count:"+item[2]+".");
 
             console.log(item);
         }
