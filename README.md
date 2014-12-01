@@ -14,6 +14,12 @@
 This is my resume.A Web Front-End Developer.click [here](http://shenqihui.github.io/lab/resume).
 
 ### Leaflet Map Demo
-It's a base demo of leafletjs. click [here](http://shenqihui.github.io/lab/leaflet)
+It's a base demo of leafletjs. click [here](http://shenqihui.github.io/lab/leaflet/) ，地图数据基于 openstreetmap。
+
+### Leaflet Map Demo Base OpenStreetMap
+It's a base demo of leafletjs. click [here](http://shenqihui.github.io/lab/leaflet/openstreetmap.html) ，地图数据基于 openstreetmap。
+
+### Leaflet Map Demo Base Mapbox
+It's a base demo of leafletjs. click [here](http://shenqihui.github.io/lab/leaflet/mapbox.html) ，地图数据基于 Mapbox
 
 ###待续
