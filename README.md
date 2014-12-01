@@ -13,4 +13,7 @@
 ### Resume
 This is my resume.A Web Front-End Developer.click [here](http://shenqihui.github.io/lab/resume).
 
+### Leaflet Map Demo
+It's a base demo of leafletjs. click [here](http://shenqihui.github.io/lab/leaflet)
+
 ###待续
