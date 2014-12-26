@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body{
+    width:1060px;
+    margin:50px auto;
+}
+/*path {  stroke: #fff; }*/
+path:hover {  opacity:0.9; }
+rect:hover {  fill:blue; }
+.axis {  font: 10px sans-serif; }
+.legend tr{    border-bottom:1px solid grey; }
+.legend tr:first-child{    border-top:1px solid grey; }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {  display: none; }
+.legend{
+    margin-bottom:76px;
+    display:inline-block;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+.legend td{
+    padding:4px 5px;
+    vertical-align:bottom;
+}
+.legendFreq, .legendPerc{
+    align:right;
+    width:50px;
+}
+.pieholoer{
+  width: 300px;
+  height: 300px;
+  float: left;
+  border: 1px solid;
+}
+</style>
+<body>
+  <h1>只有左边柱状图能触发右边的动作，右边的饼图不能触发左边的动作。</h1>
+<div id='dashboard' class="pieholoer"></div>
+<div id="pieChart"  class="pieholoer"></div>
+<script src="d3.min.js"></script>
+<script src="d3pie.js"></script>
+<script src="jquery.js"></script>
+<!-- <script src="index.js"></script> -->
+<!-- <script src="pie.demo.js"></script> -->
+<!-- <script src="pie.reflash.js"></script> -->
+<script src="index.demo.js"></script>
+</body>
+</html>
