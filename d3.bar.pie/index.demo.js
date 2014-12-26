@@ -18,6 +18,11 @@
         "canvasWidth": width,
         "canvasHeight": height
       },
+      "effects": {
+        "load": {
+          "effect": "none"
+        }
+      },
     });
     /*
     var num = 4;
