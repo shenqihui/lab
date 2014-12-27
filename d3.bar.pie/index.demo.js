@@ -79,18 +79,20 @@
     d.total = d.freq.low + d.freq.mid + d.freq.high;
   });
 
-  var pieChartFirstRanderData = (function(data){
+  var pieChartFirstRanderData = (function(dataA){
+    var data = dataA.freq;
     var returnData = [];
     for(var i in data) {
       if(data.hasOwnProperty(i)){
         returnData.push({
           label: i,
-          value: data[i]
+          value: data[i],
+          country: dataA.country
         });
       }
     }
     return returnData;
-  })(freqData[0].freq);
+  })(freqData[0]);
   var pieChartObj = (function(){
     var pieChartData = pieChartFirstRanderData;
     var container = "pieChart",
@@ -133,16 +135,26 @@
       .on('mouseover', function(){
         // console.log(arguments);
       });
-    pieChart.bindPieEvent = function(ev, cb) {
-
-      // var cbClosure = function(){
-      //   var argu = Array.apply(this,arguments);
-      //   argu.push(pieChart);
-      //   cb.apply(this, argu);
-      // };
-      // pieChart.svg
-      //   .on(ev,cbClosure);
+    var pie = d3.layout.pie().sort(null).value(function(d) {
+      return d.freq;
+    });
+    pieChart.update = function(nD) {
+      pieChart.svg.selectAll(".p0_pieChart path")
+        .data(pie(nD))
+        .transition()
+        .duration(500)
+        .attrTween("d", arcTween);
     };
+    // pieChart.bindPieEvent = function(ev, cb) {
+
+    //   var cbClosure = function(){
+    //     var argu = Array.apply(this,arguments);
+    //     argu.push(pieChart);
+    //     cb.apply(this, argu);
+    //   };
+    //   pieChart.svg
+    //     .on(ev,cbClosure);
+    // };
     /*
     var num = 4;
     function a(obj){
