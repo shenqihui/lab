@@ -22,7 +22,7 @@ It's a base demo of leafletjs. click [here](http://shenqihui.github.io/lab/leafl
 ### Leaflet Map Demo Base Mapbox
 It's a base demo of leafletjs. click [here](http://shenqihui.github.io/lab/leaflet/mapbox.html) ，地图数据基于 Mapbox
 
-### D3 的柱状图神马的
-Demo clcik [here](http://shenqihui.github.io/lab/d3.bar.pie). Hub click [here](https://github.com/shenqihui/lab/d3.bar.pie/)
+### D3 的柱状图神马的 d3.bar.pie
+Demo clcik [here](http://shenqihui.github.io/lab/d3.bar.pie). Hub click [here](https://github.com/shenqihui/lab/tree/gh-pages/d3.bar.pie/)
 
 ###待续
