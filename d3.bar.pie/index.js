@@ -80,7 +80,6 @@ function dashboard(id, fData) {
         return y(d[1]) - 5;
       })
       .attr("text-anchor", "middle");
-    var num = 1;
     function mouseover(d) {
       console.log(d);
       // utility function to be called on mouseover.
@@ -98,12 +97,6 @@ function dashboard(id, fData) {
       // call update functions of pie-chart and legend.    
       pC.update(nD);
       leg.update(nD);
-      // pie.updateProp("data.content", []);
-      d3piePie.updateProp("data.content", data.push({
-        "label": "num"+num,
-        "value": num
-      }));
-      num ++;
       // pie.updateProp("data.content", data.map(function(elem){
       //   elem.value = parseInt(elem.value * Math.random() * 10, 10);
       // }));
