@@ -1,5 +1,5 @@
 // (function(){
-  'use strict';
+  // 'use strict';
 
 
   var freqData = [
@@ -86,7 +86,7 @@
         returnData.push({
           label: i,
           value: data[i]
-        })
+        });
       }
     }
     return returnData;
@@ -181,7 +181,7 @@
         return [d.country, d.total, arr];
       } else {
         return [d.country, d.freq[type], arr];
-      };
+      }
     });
     // console.log("156", data, type, returnData);
     return returnData;
@@ -217,7 +217,7 @@
         //create svg for histogram.
         var svg = d3.select(id).append("svg")
           .attr("width", boxModel.width + boxModel.left + boxModel.right)
-          .attr("height", boxModel.height + boxModel.top + boxModel.bottom)
+          .attr("height", boxModel.height + boxModel.top + boxModel.bottom);
         var svgG = svg.append("g")
           .attr("transform", "translate(" + boxModel.left + "," + boxModel.top + ")");
 
@@ -387,6 +387,6 @@
     var data = formatDashBoradData(freqData);
     dashBoardObj.svg.select('text.dash-title').text('total');
     dashBoardObj.update(data);
-  })
+  });
 
 // })();
