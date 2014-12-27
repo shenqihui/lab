@@ -98,7 +98,7 @@
       width = $container.width() || 500,
       height = $container.height() || 400;
     var pieChart = new D3pie("pieChart", {
-      data: {
+      "data": {
         content: pieChartData
       },
       "header": {
@@ -117,6 +117,16 @@
         "load": {
           "effect": "none"
         }
+      },
+      "labels": {
+        "inner": {
+          "hideWhenLessThanPercentage": 5
+        }
+      },
+      "tooltips": {
+        "enabled": true,
+        "type": "placeholder",
+        "string": "{label}: {value}, {percentage}%"
       },
     });
     pieChart.svg.select('path')
