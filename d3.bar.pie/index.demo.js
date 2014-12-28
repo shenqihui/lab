@@ -99,7 +99,7 @@
       $container = $("#"+container),
       width = $container.width() || 500,
       height = $container.height() || 400;
-    var pieChart = new D3pie("pieChart", {
+    var pieChart = new d3pie("pieChart", {
       "data": {
         content: pieChartData
       },
@@ -118,8 +118,14 @@
       "effects": {
         "load": {
           "effect": "none"
+        },
+        "pullOutSegmentOnClick": {
+          effect: "none", // none / linear / bounce / elastic / back
+          speed: 300,
+          size: 10
         }
       },
+
       "labels": {
         "inner": {
           "hideWhenLessThanPercentage": 5
