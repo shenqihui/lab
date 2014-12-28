@@ -25,4 +25,8 @@ It's a base demo of leafletjs. click [here](http://shenqihui.github.io/lab/leafl
 ### D3 的柱状图神马的 d3.bar.pie
 Demo clcik [here](http://shenqihui.github.io/lab/d3.bar.pie). Hub click [here](https://github.com/shenqihui/lab/tree/gh-pages/d3.bar.pie/)
 
+### d3pie
+贡献 0.1.6 版本。
+Demo clcik [here](http://d3pie.org/website/examples/update_data.html). Hub click [here](https://github.com/shenqihui/d3pie/)
+
 ###待续
