@@ -5,74 +5,34 @@
   var freqData = [
     {
       country: 'AL',
-      freq: {
-        low: 4786,
-        mid: 1319,
-        high: 249
-      }
+      freq: {low: 4786, mid: 1319, high: 249 }
     }, {
       country: 'AZ',
-      freq: {
-        low: 1101,
-        mid: 412,
-        high: 674
-      }
+      freq: {low: 1101, mid: 412, high: 674 }
     }, {
       country: 'CT',
-      freq: {
-        low: 932,
-        mid: 2149,
-        high: 418
-      }
+      freq: {low: 932, mid: 2149, high: 418 }
     }, {
       country: 'DE',
-      freq: {
-        low: 832,
-        mid: 1152,
-        high: 1862
-      }
+      freq: {low: 832, mid: 1152, high: 1862 }
     }, {
       country: 'FL',
-      freq: {
-        low: 4481,
-        mid: 3304,
-        high: 948
-      }
+      freq: {low: 4481, mid: 3304, high: 948 }
     }, {
       country: 'GA',
-      freq: {
-        low: 1619,
-        mid: 167,
-        high: 1063
-      }
+      freq: {low: 1619, mid: 167, high: 1063 }
     }, {
       country: 'IA',
-      freq: {
-        low: 1819,
-        mid: 247,
-        high: 1203
-      }
+      freq: {low: 1819, mid: 247, high: 1203 }
     }, {
       country: 'IL',
-      freq: {
-        low: 4498,
-        mid: 3852,
-        high: 942
-      }
+      freq: {low: 4498, mid: 3852, high: 942 }
     }, {
       country: 'IN',
-      freq: {
-        low: 797,
-        mid: 1849,
-        high: 1534
-      }
+      freq: {low: 797, mid: 1849, high: 1534 }
     }, {
       country: 'KS',
-      freq: {
-        low: 162,
-        mid: 379,
-        high: 471
-      }
+      freq: {low: 162, mid: 379, high: 471 }
     }
   ];
   freqData.forEach(function(d) {
