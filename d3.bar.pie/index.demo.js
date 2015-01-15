@@ -361,6 +361,9 @@
     dashBoardObj.update(data);
   });
 
+
+  
+
   $('#showtotal').on('click', function(){
     var data = formatDashBoradData(freqData);
     dashBoardObj.svg.select('text.dash-title').text('total');

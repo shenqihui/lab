@@ -29,4 +29,7 @@ Demo clcik [here](http://shenqihui.github.io/lab/d3.bar.pie). Hub click [here](h
 贡献 0.1.6 版本。
 Demo clcik [here](http://d3pie.org/website/examples/update_data.html). Hub click [here](https://github.com/shenqihui/d3pie/)
 
+### 神奇辉的blog
+Demo clcik [here](http://shenqihui.github.io/). Hub click [here](https://github.com/shenqihui/shenqihui.github.io/)
+
 ###待续
