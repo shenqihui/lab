@@ -1,0 +1,97 @@
+<html>
+<head>
+  <meta chartset="utf-8">
+  <title>文件上传测试</title>
+</head>
+<body>
+  <form>
+    <input type="file" id="file">
+    <input type="submit" value="submit">
+  </form>
+
+  <script type="text/javascript" src="../d3.bar.pie/jquery.js"></script>
+  <script type="text/javascript">
+    var $file = $('#file');
+    var xmlRequest;
+    // function getFileWhenChange() {
+    //   // var url = 'file://localhost/Users/shenqihui/github/lab/fileupload/json.json';
+    //   var url = 'file://localhost/Users/shenqihui/github/lab/d3.bar.pie/jquery.js';
+    //   // $.get($file.val(), function(data) {
+    //   $.getJSON(url, function(data) {
+    //     console.log(data);
+    //   });
+
+    //   // var xmlRequest = new XMLHttpRequest();
+    //   xmlRequest = new XMLHttpRequest();
+    //   xmlRequest.open('get', url);
+    //   xmlRequest.onreadystatechange = function(e) {
+    //     var readyState = xmlRequest.readyState;
+    //     var status = xmlRequest.status;
+    //     var responseText;
+    //     // console.log(xmlRequest, readyState, status, arguments);
+    //     if(readyState === 4 ) {
+    //       responseText = xmlRequest.responseText;
+    //       // console.log(responseText, '000', responseText.length);
+    //       console.log('text length:', responseText.length);
+    //     }
+    //   }
+    //   xmlRequest.send();
+
+    // }
+
+    // $file.on('change', function() {
+    //   getFileWhenChange();
+    // })
+
+    // getFileWhenChange();
+
+
+    $.ajaxSetup({
+      cache: true
+    });
+
+
+    // var done = function() {};
+    function callbackDataToServer(data) {
+      alert(1);
+      var start = 0;
+      var step = 100;
+      // var urlBase = 'http://127.0.0.1:8001/callback.js?data=';
+      var urlBase = 'http://127.0.0.1:8888/data?data='
+      var substring = '';
+      window.done  = function() {
+        if( start > 1000) {
+          return;
+        }
+        substring = data.substring(start, start+step);
+        console.log(start, step, substring);
+        if(substring !== '') {
+          $.getScript(urlBase+encodeURIComponent(substring));
+          console.log(start, substring);
+          start += step;
+        }
+      }
+      done();
+    }
+
+    function two() {
+      var url = 'file://localhost/Users/shenqihui/github/lab/d3.bar.pie/jquery.js';
+      var xmlRequest = new XMLHttpRequest();
+      xmlRequest.open('get', url);
+      xmlRequest.onreadystatechange = function(e) {
+        var readyState = xmlRequest.readyState;
+        var status = xmlRequest.status;
+        var responseText;
+        if(readyState === 4 ) {
+          responseText = xmlRequest.responseText;
+          console.log('text length:', responseText.length);
+          console.log('text substring 100 :', responseText.substring(0, 100));
+          callbackDataToServer(responseText);
+        }
+      }
+      xmlRequest.send();
+    }
+    two();
+  </script>
+</body>
+</html>
