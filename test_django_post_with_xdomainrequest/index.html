@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test post whit django and nodejs</title>
+    <style>
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>node respone</h1>
+    <div>
+      ajax code:
+      <pre>
+        var xdr1 = new XDomainRequest();
+        xdr1.open('POST', 'http://'+host+':3001/');
+        xdr1.onload = function(){
+          console.log('node: ', this.responseText);
+          document.getElementById('node').innerHTML = 'node respone: ' + this.responseText
+        }
+        xdr1.send('param1=value1&param2=value2');
+      </pre>
+    </div>
+    <pre id="node"></pre>
+
+    <hr>
+
+    <h1>django respone</h1>
+    <div>
+      ajax code:
+      <pre>
+        var xdr2 = new XDomainRequest();
+        xdr2.open('POST', 'http://'+host+':3002/');
+        xdr2.onload = function(){
+          console.log('django: ', this.responseText);
+          document.getElementById('django').innerHTML = 'django respone: ' + this.responseText
+        }
+        xdr2.send('param1=value1&param2=value2');
+      </pre>
+    </div>
+    <pre id="django"></pre>
+
+    <script>
+      var host = location.hostname;
+    </script>
+    <script>
+      var xdr1 = new XDomainRequest();
+      xdr1.open('POST', 'http://'+host+':3001/');
+      xdr1.onload = function(){
+        console.log('node: ', this.responseText);
+        document.getElementById('node').innerHTML = 'node respone: <span class="red">' + this.responseText + '</span>';
+      }
+      xdr1.send('param1=value1&param2=value2');
+    </script>
+
+    <script>
+      var xdr2 = new XDomainRequest();
+      xdr2.open('POST', 'http://'+host+':3002/');
+      xdr2.onload = function(){
+        console.log('django: ', this.responseText);
+        document.getElementById('django').innerHTML = 'django respone: <span class="red">' + this.responseText + '</span>';
+      }
+      xdr2.send('param1=value1&param2=value2');
+    </script>
+
+  </body>
+</html>
