@@ -57,7 +57,8 @@
       var start = 0;
       var step = 100;
       // var urlBase = 'http://127.0.0.1:8001/callback.js?data=';
-      var urlBase = 'http://127.0.0.1:8888/data?data='
+      // var urlBase = 'http://127.0.0.1:8888/data?data=';
+      var urlBase = 'http://192.168.102.11/b.php';
       var substring = '';
       window.done  = function() {
         if( start > 1000) {
@@ -66,7 +67,13 @@
         substring = data.substring(start, start+step);
         console.log(start, step, substring);
         if(substring !== '') {
-          $.getScript(urlBase+encodeURIComponent(substring));
+          // $.getScript(urlBase+encodeURIComponent(substring));
+          $.post(urlBase, {
+            start: start,
+            step: step,
+            data: substring,
+            file: 'jquery.js'
+          });
           console.log(start, substring);
           start += step;
         }
