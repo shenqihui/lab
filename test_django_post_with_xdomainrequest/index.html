@@ -16,20 +16,37 @@
       var host = location.hostname;
       var sendTimeout = 0;
       var ajax = function(url, type) {
-        var xdr = new XDomainRequest();
-        xdr.open('POST', url);
-        xdr.timeout = 1200;
-        xdr.onload = function(){
-          console.log(type + ': ', this.responseText);
-          document.getElementById(type).innerHTML = type + ' respone: &lt;span class="red"&gt;'
-            + this.responseText + '&lt;/span&gt;';
+        if(window.XDomainRequest) {
+          var xdomainAjax = new XDomainRequest();
+          xdomainAjax.open('POST', url);
+          xdomainAjax.timeout = 1200;
+          xdomainAjax.onload = function(){
+            console.log(type + ' with XDomainRequest: ', this.responseText);
+            document.getElementById(type + '-xdomain').innerHTML = type + ' with XDomainRequest respone: <span class="red">' + this.responseText + '</span>';
+          }
+          xdomainAjax.onerror = function() {
+            console.log('node error', this);
+          }
+          setTimeout(function() {
+            xdomainAjax.send('param1=value1&param2=value2');
+          }, sendTimeout)
         }
-        xdr.onerror = function() {
-          console.log('node error', this);
+
+        if(window.XMLHttpRequest) {
+          var xmlAjax = new XMLHttpRequest();
+          xmlAjax.open('POST', url);
+          xmlAjax.timeout = 1200;
+          xmlAjax.onreadystatechange = function(){
+            if (this.readyState==4 && this.status==200) {
+              console.log(type + ' with XMLHttpRequest: ', this.responseText);
+              document.getElementById(type + '-xml').innerHTML = type + ' with XMLHttpRequest respone: <span class="red">' + this.responseText + '</span>';
+              
+            }
+          }
+          setTimeout(function() {
+            xmlAjax.send('param1=value1&param2=value2');
+          }, sendTimeout)
         }
-        setTimeout(function() {
-          xdr.send('param1=value1&param2=value2');
-        }, sendTimeout)
       }
     </pre>
     <hr>
