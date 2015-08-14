@@ -12,15 +12,7 @@
     <h1>node respone</h1>
     <div>
       ajax code:
-      <pre>
-        var xdr1 = new XDomainRequest();
-        xdr1.open('POST', 'http://'+host+':3001/');
-        xdr1.onload = function(){
-          console.log('node: ', this.responseText);
-          document.getElementById('node').innerHTML = 'node respone: ' + this.responseText
-        }
-        xdr1.send('param1=value1&param2=value2');
-      </pre>
+      <pre></pre>
     </div>
     <pre id="node"></pre>
 
@@ -29,39 +21,44 @@
     <h1>django respone</h1>
     <div>
       ajax code:
-      <pre>
-        var xdr2 = new XDomainRequest();
-        xdr2.open('POST', 'http://'+host+':3002/');
-        xdr2.onload = function(){
-          console.log('django: ', this.responseText);
-          document.getElementById('django').innerHTML = 'django respone: ' + this.responseText
-        }
-        xdr2.send('param1=value1&param2=value2');
-      </pre>
+      <pre></pre>
     </div>
     <pre id="django"></pre>
 
     <script>
       var host = location.hostname;
+      var sendTimeout = 0;
     </script>
     <script>
       var xdr1 = new XDomainRequest();
       xdr1.open('POST', 'http://'+host+':3001/');
+      xdr1.timeout = 1200;
       xdr1.onload = function(){
         console.log('node: ', this.responseText);
         document.getElementById('node').innerHTML = 'node respone: <span class="red">' + this.responseText + '</span>';
       }
-      xdr1.send('param1=value1&param2=value2');
+      xdr1.onerror = function() {
+        console.log('node error', this);
+      }
+      setTimeout(function() {
+        xdr1.send('param1=value1&param2=value2');
+      }, sendTimeout)
     </script>
 
     <script>
       var xdr2 = new XDomainRequest();
       xdr2.open('POST', 'http://'+host+':3002/');
+      xdr2.timeout = 1200;
       xdr2.onload = function(){
         console.log('django: ', this.responseText);
         document.getElementById('django').innerHTML = 'django respone: <span class="red">' + this.responseText + '</span>';
       }
-      xdr2.send('param1=value1&param2=value2');
+      xdr2.onerror = function() {
+        console.log('django error', this);
+      }
+      setTimeout(function() {
+        xdr2.send('param1=value1&param2=value2');
+      }, sendTimeout)
     </script>
 
   </body>

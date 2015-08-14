@@ -10,7 +10,7 @@ def index(request):
     if request.method == 'POST':
         data = request.POST
         print 'POSTed: ', data
-        response = HttpResponse(json.dumps(data), content_type='text/html')
+        response = HttpResponse('POSTed: ' + json.dumps(data), content_type='text/html')
     elif request.method == 'GET':
         response = HttpResponse('Please use post method', content_type='text/html')
     else:
