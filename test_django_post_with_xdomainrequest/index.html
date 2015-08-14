@@ -1,6 +1,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>test post whit django and nodejs</title>
     <style>
       .red {
@@ -9,56 +10,94 @@
     </style>
   </head>
   <body>
-    <h1>node respone</h1>
+    <h1>Test Django POST Request Method</h1>
+    <h3>core code</h3>
+    <pre>
+      var host = location.hostname;
+      var sendTimeout = 0;
+      var ajax = function(url, type) {
+        var xdr = new XDomainRequest();
+        xdr.open('POST', url);
+        xdr.timeout = 1200;
+        xdr.onload = function(){
+          console.log(type + ': ', this.responseText);
+          document.getElementById(type).innerHTML = type + ' respone: &lt;span class="red"&gt;'
+            + this.responseText + '&lt;/span&gt;';
+        }
+        xdr.onerror = function() {
+          console.log('node error', this);
+        }
+        setTimeout(function() {
+          xdr.send('param1=value1&param2=value2');
+        }, sendTimeout)
+      }
+    </pre>
+    <hr>
+    <h3>node respone</h3>
     <div>
       ajax code:
-      <pre></pre>
+      <pre>
+        ajax('http://'+host+':3001/', 'node');
+      </pre>
     </div>
-    <pre id="node"></pre>
+    <pre id="node-xml"></pre>
+    <pre id="node-xdomain"></pre>
 
     <hr>
 
-    <h1>django respone</h1>
+    <h3>django respone</h3>
     <div>
       ajax code:
-      <pre></pre>
+      <pre>
+        ajax('http://'+host+':3002/', 'django');
+      </pre>
     </div>
-    <pre id="django"></pre>
+    <pre id="django-xml"></pre>
+    <pre id="django-xdomain"></pre>
 
     <script>
       var host = location.hostname;
       var sendTimeout = 0;
+      var ajax = function(url, type) {
+        if(window.XDomainRequest) {
+          var xdomainAjax = new XDomainRequest();
+          xdomainAjax.open('POST', url);
+          xdomainAjax.timeout = 1200;
+          xdomainAjax.onload = function(){
+            console.log(type + ' with XDomainRequest: ', this.responseText);
+            document.getElementById(type + '-xdomain').innerHTML = type + ' with XDomainRequest respone: <span class="red">' + this.responseText + '</span>';
+          }
+          xdomainAjax.onerror = function() {
+            console.log('node error', this);
+          }
+          setTimeout(function() {
+            xdomainAjax.send('param1=value1&param2=value2');
+          }, sendTimeout)
+        }
+
+        if(window.XMLHttpRequest) {
+          var xmlAjax = new XMLHttpRequest();
+          xmlAjax.open('POST', url);
+          xmlAjax.timeout = 1200;
+          xmlAjax.onreadystatechange = function(){
+            if (this.readyState==4 && this.status==200) {
+              console.log(type + ' with XMLHttpRequest: ', this.responseText);
+              document.getElementById(type + '-xml').innerHTML = type + ' with XMLHttpRequest respone: <span class="red">' + this.responseText + '</span>';
+              
+            }
+          }
+          setTimeout(function() {
+            xmlAjax.send('param1=value1&param2=value2');
+          }, sendTimeout)
+        }
+      }
     </script>
     <script>
-      var xdr1 = new XDomainRequest();
-      xdr1.open('POST', 'http://'+host+':3001/');
-      xdr1.timeout = 1200;
-      xdr1.onload = function(){
-        console.log('node: ', this.responseText);
-        document.getElementById('node').innerHTML = 'node respone: <span class="red">' + this.responseText + '</span>';
-      }
-      xdr1.onerror = function() {
-        console.log('node error', this);
-      }
-      setTimeout(function() {
-        xdr1.send('param1=value1&param2=value2');
-      }, sendTimeout)
+      ajax('http://'+host+':3001/', 'node');
     </script>
 
     <script>
-      var xdr2 = new XDomainRequest();
-      xdr2.open('POST', 'http://'+host+':3002/');
-      xdr2.timeout = 1200;
-      xdr2.onload = function(){
-        console.log('django: ', this.responseText);
-        document.getElementById('django').innerHTML = 'django respone: <span class="red">' + this.responseText + '</span>';
-      }
-      xdr2.onerror = function() {
-        console.log('django error', this);
-      }
-      setTimeout(function() {
-        xdr2.send('param1=value1&param2=value2');
-      }, sendTimeout)
+      ajax('http://'+host+':3002/', 'django');
     </script>
 
   </body>
