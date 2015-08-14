@@ -10,8 +10,6 @@
 ### Buttons
 这个是一个暗色调的 Buttons ，没有进行 IE 系列浏览器的测试， [Demo](http://shenqihui.github.io/lab/demo/buttons)
 
-### Resume
-This is my resume.A Web Front-End Developer.click [here](http://shenqihui.github.io/lab/resume).
 
 ### Leaflet Map Demo
 It's a base demo of leafletjs. click [here](http://shenqihui.github.io/lab/leaflet/) ，地图数据基于 openstreetmap。
