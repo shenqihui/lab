@@ -2,6 +2,7 @@ var http = require('http');
 
 http.createServer(function (req, res) {
   var body = '';
+  console.log(req.method);
   req.on('data', function (chunk) {
     body += chunk;
   });

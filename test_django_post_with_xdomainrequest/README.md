@@ -20,10 +20,10 @@ python manage.py runserver 0.0.0.0:3002
 即开启了 http://ip:3003 的服务，可看到服务结果。
 
 ## 相关依赖
-1、 nodejs
-2、 npm
-3、 anywhere
-4、 django==1.8.3
+1、 nodejs  
+2、 npm  
+3、 anywhere  
+4、 django==1.8.3  
 
 ## 相关文章：
 
